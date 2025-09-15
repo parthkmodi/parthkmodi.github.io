@@ -567,6 +567,27 @@ small {
   background-color: #64B5F6 !important;
 }
 
+.map-row {
+  display: flex !important; 
+  justify-content: center !important;
+}
+
+.map {
+  background: #f5f7fa; 
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07); 
+  border-radius: 12px;
+}
+
+.map-card-content {
+  padding: 0 !important;
+}
+
+.map.iframe {
+  border:0; 
+  border-radius: 12px; 
+  display: block;
+}
+
 @media (min-width: 1200px) {
   #experience .container {
     width: 860px;
