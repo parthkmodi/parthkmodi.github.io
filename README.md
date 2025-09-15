@@ -15,3 +15,7 @@ This repo is a clone of https://github.com/varadbhogayata/varadbhogayata.github.
 ### Activity 2
 ![Activity 2 Website Screenshot](activities/activity2-website.png)
 ![Activity 2 Repo Screenshot](activities/activity2-repo.png)
+
+### Activity 3
+![Activity 3 Website Screenshot](activities/activity3-website.png)
+![Activity 3 Repo Screenshot](activities/activity3-repo.png)
