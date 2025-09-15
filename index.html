@@ -319,55 +319,12 @@
     </section>
 
     <!-- Fourth Section: Projects -->
-    <section id="projects" class="section scrollspy">
+     <section id="projects" class="section scrollspy">
       <h3 class="page-title white-text blue">Projects</h3>
       <div class="container">
-        <div class="row">
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="music streaming app" src="assets/img/gis-software.png" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator blue-text hoverline">GIS Software<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  A full-fledged mapping software built on OpenStreetMap data.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> C++, OpenStreetMap data</li>
-                  <li>Collaborated with a team of 3 to design and develop a GIS mapping software for 10+ cities</li>
-                  <li>Utilized data structures, multithreading, and routing algorithms (e.g., Dijkstra, A*) to optimize storage, enhance performance, and enable efficient pathfinding.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="quiz app" src="assets/img/potluck.jpg" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator blue-text hoverline">HotPotluck<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  A web app to collaborate and manage potluck events.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> PHP, HTML/CSS, SQL</li>
-                  <li>Designed and developed a user-friendly website that streamlined the process of organizing potlucks, facilitating sign-ups, menu coordination, and logistics management.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        <div id="recent-projects"></div>
+        <div class="center-align">
+          <button id="load-more-btn" class="btn blue">Load More</button>
         </div>
       </div>
     </section>
@@ -591,6 +548,78 @@
         closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
       })
     })
+  </script>
+
+  <script>
+    // Example projects array (add your real projects here)
+    const projects = [
+      {
+        title: "GIS Software",
+        image: "assets/img/gis-software.png",
+        description: "A full-fledged mapping software built on OpenStreetMap data.",
+        link: "#",
+        tools: "C++, OpenStreetMap data"
+      },
+      {
+        title: "HotPotluck",
+        image: "assets/img/potluck.jpg",
+        description: "A web app to collaborate and manage potluck events.",
+        link: "#",
+        tools: "PHP, HTML/CSS, SQL"
+      },
+      {
+        title: "Blog Website",
+        image: "assets/img/blog-website.webp",
+        description: "A personal blog website to share thoughts and ideas.",
+        link: "#",
+        tools: "PHP, HTML/CSS, SQL"
+      }
+    ];
+
+    let currentlyDisplayed = 0;
+    const numberOfProjectsToLoad = 1;
+
+    function displayProjects() {
+      const container = document.getElementById('recent-projects');
+      let html = '<div class="row">';
+      for (let i = 0; i < currentlyDisplayed; i++) {
+        const proj = projects[i];
+        html += `
+          <div class="col s12 m6 l4">
+            <div class="card medium">
+              <div class="card-image waves-effect waves-block waves-light" style="height:200px;overflow:hidden;">
+                <img alt="${proj.title}" src="${proj.image}" style="object-fit:cover;width:100%;height:200px;" class="activator" />
+              </div>
+              <div class="card-content">
+                <span class="card-title activator blue-text hoverline">${proj.title}</span>
+                <p>${proj.description}</p>
+                <p><b>Tools:</b> ${proj.tools}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      html += '</div>';
+      container.innerHTML = html;
+
+      // Hide button once all projects are currentlyDisplayed
+      if (currentlyDisplayed >= projects.length) {
+        document.getElementById('load-more-btn').style.display = 'none';
+      } else {
+        document.getElementById('load-more-btn').style.display = 'inline-block';
+      }
+    }
+
+    function loadMoreProjects() {
+      currentlyDisplayed = Math.min(currentlyDisplayed + numberOfProjectsToLoad, projects.length);
+      displayProjects();
+    }
+
+    currentlyDisplayed = 1;
+    document.addEventListener('DOMContentLoaded', function() {
+      displayProjects();
+      document.getElementById('load-more-btn').addEventListener('click', loadMoreProjects);
+    });
   </script>
 </body>
 
