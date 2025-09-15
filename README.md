@@ -8,3 +8,6 @@
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 This repo is a clone of https://github.com/varadbhogayata/varadbhogayata.github.io
+
+### Activity 1
+![Activity 1 Screenshot](activities/activity1-repo.png)
